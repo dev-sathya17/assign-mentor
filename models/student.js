@@ -1,5 +1,7 @@
+// Importing Mongoose library.
 const mongoose = require("mongoose");
 
+// Creating a schema for the students collection.
 const studentSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -29,4 +31,5 @@ const studentSchema = new mongoose.Schema({
   },
 });
 
+// Exporting the model.
 module.exports = mongoose.model("Student", studentSchema, "students");

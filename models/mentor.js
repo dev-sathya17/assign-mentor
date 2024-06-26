@@ -1,5 +1,7 @@
+// Importing the Mongoose library.
 const mongoose = require("mongoose");
 
+// Creating a schema for the mentors collection.
 const mentorSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -24,4 +26,5 @@ const mentorSchema = new mongoose.Schema({
   },
 });
 
+// Exporting the model.
 module.exports = mongoose.model("Mentor", mentorSchema, "mentors");
