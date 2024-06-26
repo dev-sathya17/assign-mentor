@@ -70,6 +70,23 @@ const studentController = {
       res.status(500).json({ message: "Internal server error" });
     }
   },
+  getPreviousMentors: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const student = await Student.findById(id);
+      if (!student) {
+        return res.status(404).json({ message: "Student not found" });
+      }
+      const previousMentors = await Student.find(
+        { _id: id },
+        { previousMentors: 1, name: 1, _id: 0 }
+      ).populate("previousMentors", "name email");
+      res.status(200).json(previousMentors);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  },
 };
 
 module.exports = studentController;
