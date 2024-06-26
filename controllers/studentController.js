@@ -18,6 +18,15 @@ const studentController = {
       res.status(500).json({ message: "Internal server error" });
     }
   },
+  getUnassignedStudents: async (req, res) => {
+    try {
+      const students = await Student.find({ currentMentor: null });
+      res.status(200).json(students);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  },
 };
 
 module.exports = studentController;
