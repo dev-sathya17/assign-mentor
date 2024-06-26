@@ -16,6 +16,7 @@ const studentSchema = new mongoose.Schema({
   currentMentor: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Mentor",
+    default: null,
   },
   previousMentors: {
     type: [
